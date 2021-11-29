@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state_notifier_example/widgets/text_form_filed_shadow.dart';
+import 'package:state_notifier_example/widgets/text_form_field_shadow.dart';
 
 import '../book_state.dart';
 import '../book_state_notifier.dart';
@@ -8,8 +8,8 @@ import '../book_state_notifier.dart';
 class AddBookDialog extends ConsumerWidget {
   AddBookDialog({Key? key}) : super(key: key);
 
-  TextEditingController bookNameController = TextEditingController();
-  TextEditingController bookAuthorContorller = TextEditingController();
+  final TextEditingController bookNameController = TextEditingController();
+  final TextEditingController bookAuthorContorller = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
