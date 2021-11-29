@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_notifier_example/book_state.dart';
 
-import '../book_state_notifier.dart';
-
-class BookCard extends ConsumerWidget {
+class BookCard extends StatelessWidget {
   final Book book;
   const BookCard({required this.book, Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final BookStateNotifier bookStateNotifier =
-        ref.watch(booksProvider.notifier);
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Container(
@@ -26,7 +21,9 @@ class BookCard extends ConsumerWidget {
               ]),
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: ListTile(
-              onLongPress: () => bookStateNotifier.removeBook(book),
+              onLongPress: () {
+                //TODO: Add Remove Book Method Here
+              },
               title: Text(
                 book.name,
                 style: const TextStyle(

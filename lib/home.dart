@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state_notifier_example/book_state_notifier.dart';
 import 'package:state_notifier_example/widgets/add_book_dialog.dart';
 
-import 'widgets/book_card.dart';
-import 'book_state.dart';
-
-class MyHomePage extends ConsumerWidget {
+class MyHomePage extends StatelessWidget {
   final String title;
   const MyHomePage({required this.title, Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final List<Book> bookList = ref.watch(booksProvider);
 
     return Scaffold(
         appBar: AppBar(
@@ -29,19 +23,13 @@ class MyHomePage extends ConsumerWidget {
                     style: OutlinedButton.styleFrom(
                         side: const BorderSide(color: Colors.blueAccent)),
                     onPressed: () => showDialog(
-                        context: context,
-                        builder: (_) => AddBookDialog()),
+                        context: context, builder: (_) => AddBookDialog()),
                     child: const Text('ADD BOOK')),
               ),
-              Expanded(
+              const Expanded(
                 child: Center(
-                  child: bookList.isEmpty
-                      ? const Text("Add books to display here.")
-                      : ListView.builder(
-                          itemCount: bookList.length,
-                          itemBuilder: (_, index) {
-                            return BookCard(book: bookList[index]);
-                          }),
+                  child: Text(
+                      "Add books to display here."), //TODO: Conditional Statement Here for ListView
                 ),
               ),
             ],

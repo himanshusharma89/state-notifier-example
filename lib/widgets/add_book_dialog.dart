@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_notifier_example/widgets/text_form_filed_shadow.dart';
 
-import '../book_state.dart';
-import '../book_state_notifier.dart';
-
-class AddBookDialog extends ConsumerWidget {
+class AddBookDialog extends StatelessWidget {
   AddBookDialog({Key? key}) : super(key: key);
 
   TextEditingController bookNameController = TextEditingController();
   TextEditingController bookAuthorContorller = TextEditingController();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final BookStateNotifier bookStateNotifier =
-        ref.watch(booksProvider.notifier);
     return Dialog(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
@@ -42,9 +36,7 @@ class AddBookDialog extends ConsumerWidget {
               width: width,
               child: ElevatedButton(
                   onPressed: () {
-                    bookStateNotifier.addBook(Book(
-                        name: bookNameController.text,
-                        author: bookAuthorContorller.text));
+                    //TODO: Book Add Method here
                     Navigator.pop(context);
                   },
                   child: const Text('ADD')),
